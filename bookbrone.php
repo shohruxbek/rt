@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $student_id = trim($_POST["student_id"]);
 		$book_id = trim($_POST["book_id"]);
 		$bookdate = date('Y-m-d H:i:s');
-		$total = trim($_POST["total"]);
+		$total = 1;
 		$issue_date = trim($_POST["issue_date"]);
 		$return_date = trim($_POST["return_date"]);
 		
@@ -144,8 +144,12 @@ if($rowq3!=null){
                 </div>
                 <!-- row -->
                 <div class="row">
-                    
-					<div class="col-xl-8 col-xxl-10">
+                    <div class="col-12">   
+                        <?php
+                        echo $alert;
+                    ?>
+                    </div>
+					<div class="col-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Talabaga kitob berish</h4>
@@ -156,7 +160,7 @@ if($rowq3!=null){
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Talaba raqami</label>
                                             <div class="col-sm-3">
-                                                <input type="text" id="student_id" name="student_id" class="form-control" placeholder="Talaba raqami">
+                                                <input type="text" id="student_id" name="student_id" class="form-control" placeholder="Talaba raqami"  required>
                                             </div>
                                             <div class="col-sm-6">
                                                 <input type="text" id="student_id_result" name="student_id_result" class="form-control" placeholder="ismi" readonly>
@@ -165,29 +169,23 @@ if($rowq3!=null){
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Kitob raqami</label>
                                             <div class="col-sm-3">
-                                                <input type="text" id="book_id" name="book_id" class="form-control" placeholder="Kitob raqami">
+                                                <input type="text" id="book_id" name="book_id" class="form-control" placeholder="Kitob raqami"  required>
                                             </div>
                                             <div class="col-sm-6">
                                                 <input type="text" id="book_id_result" name="book_id_result" class="form-control" placeholder="ma'lumoti" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Soni</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="total" class="form-control" placeholder="Soni">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label class="col-sm-3 col-form-label"> Olish sanasi</label>
                                             <div class="col-sm-9">
                                                 
-                                                <input name="issue_date" class="datepicker-default form-control" id="datepicker" placeholder="olish sanasi">
+                                                <input name="issue_date" class="datepicker-default form-control" id="datepicker" placeholder="olish sanasi" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label"> Qaytarish sanasi</label>
                                             <div class="col-sm-9">
-                                            <input name="return_date" class="datepicker-default form-control" id="datepicker" placeholder="qaytarish sanasi">
+                                            <input name="return_date" class="datepicker-default form-control" id="datepicker" placeholder="qaytarish sanasi" required>
                                            
                                             </div>
                                         </div>
@@ -203,11 +201,7 @@ if($rowq3!=null){
                             </div>
                         </div>
 					</div>
-					<div class="col-xl-2 col-xxl-2 col-md-8">	
-                        <?php
-                        echo $alert;
-                    ?>
-					</div>
+					
                 </div>
             </div>
         </div>

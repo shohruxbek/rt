@@ -7,7 +7,7 @@ require_once "helpers.php";
 $oldpass = "";
 $newpass1 = "";
 $newpass2 = "";
-
+$alert = "";
 
 
 // Processing form data when form is submitted

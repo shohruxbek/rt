@@ -35,6 +35,13 @@
 						</a>
 					</li>
                 </ul>
+                <ul class="metismenu" id="menu">
+                    <li><a href="students.php" class="ai-icon" aria-expanded="false">
+							<i class="flaticon-381-network"></i>
+							<span class="nav-text">Talabalar ro'yxati</span>
+						</a>
+					</li>
+                </ul>
                  <ul class="metismenu" id="menu">
                     <li><a href="settings.php" class="ai-icon" aria-expanded="false">
 							<i class="flaticon-381-settings-2"></i>

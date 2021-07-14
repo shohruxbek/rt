@@ -17,7 +17,7 @@ $lastname_err = "";
 $sharifname_err = "";
 $direction_err = "";
 $group_err = "";
-
+$alert = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -90,8 +90,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
                 <!-- row -->
                 <div class="row">
-                    
-					<div class="col-xl-6 col-xxl-8">
+                    <div class="col-12">   
+                        <?php
+                        echo $alert;
+                    ?>
+                    </div>
+					<div class="col-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Talaba kiritish</h4>
@@ -145,11 +149,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             </div>
                         </div>
 					</div>
-                    <div class="col-xl-3 col-xxl-4 col-md-6">	
-                        <?php
-                        echo $alert;
-                    ?>
-					</div>
+                    
                 </div>
             </div>
         </div>
