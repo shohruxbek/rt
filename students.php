@@ -58,7 +58,7 @@ include_once 'session.php';
                 <div class="page-titles">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="javascript:void(0)">Bosh menyu</a></li>
-						<li class="breadcrumb-item active"><a href="javascript:void(0)">Kitoblar fondi</a></li>
+						<li class="breadcrumb-item active"><a href="javascript:void(0)">Talabalar</a></li>
 					</ol>
                 </div>
                 <!-- row -->

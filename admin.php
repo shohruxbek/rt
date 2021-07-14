@@ -10,8 +10,8 @@ require_once "config.php";
 $total=0;
 $gettotal=0;
        while($rowc = mysqli_fetch_array($resultc)){
-$total+=$rowc['total'];
-$gettotal+=$rowc['gettotal'];
+$total+=(int)$rowc['total'];
+$gettotal+=(int)$rowc['gettotal'];
        }
 
          $sql = "SELECT COUNT(id) FROM student";
