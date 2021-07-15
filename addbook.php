@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         break;
     }
 
-    $num="";
+    $num=" ";
     foreach($ars as $key){
         $num.="$key ";
     }

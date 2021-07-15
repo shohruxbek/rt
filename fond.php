@@ -6,15 +6,26 @@ include_once 'session.php';
          $alert="";
         if(isset($_GET["del"]) && !empty($_GET["del"])){
                 $para = trim($_GET["del"]);
+                $id = trim($_GET["id"]);
 
+                $son = 0;
+$array = explode(' ', $para);
+                for($i=0;$i<count($array);$i++){
 
-                $sqdl3 = "SELECT * FROM `reserv` WHERE `book_id`= '$para' LIMIT 1";
+                    
+$sqdl3 = "SELECT * FROM `reserv` WHERE `book_id`= '".$array[$i]."' LIMIT 1";
                     $resultd3 = mysqli_query($link, $sqdl3);
                     $rowq3 = mysqli_fetch_assoc($resultd3);
                     
-                    if($rowq3==null){
+                    if($rowq3!=null){
+$son++;
+                    }
+                }
 
-                        $sql = "DELETE FROM `book` WHERE `number` = $para";
+              
+                    if($son==0){
+
+                        $sql = "DELETE FROM `book` WHERE `id` = $id";
                         $result = mysqli_query($link, $sql);
                         
                     if($result) {
@@ -133,7 +144,7 @@ while($row = mysqli_fetch_array($result)){
      echo '<td><div class="d-flex">
     
     
-        <a href="fond.php?del='.$row['number'].'" class="btn btn-danger shadow btn-xs sharp mr-1"><i class="fa fa-trash"></i></a>
+        <a href="fond.php?del='.$row['number'].'&id='.$row['id'].'" class="btn btn-danger shadow btn-xs sharp mr-1"><i class="fa fa-trash"></i></a>
     </div></td>';
     echo "</tr>";
     $i++;

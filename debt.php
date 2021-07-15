@@ -5,9 +5,6 @@ include_once 'session.php';
         require_once "helpers.php";
  $alert="";
         if(isset($_GET["del"]) && !empty($_GET["del"])){
-   
-        
-            
                 $para = trim($_GET["del"]);
                 
                 $sqdl5 = "SELECT * FROM `reserv` WHERE `id`='$para' LIMIT 1";
@@ -19,7 +16,7 @@ include_once 'session.php';
                     $total = $rowq5['total'];
                     $or = $rowq5['book_id'];
 
-                    $sqdl3 = "SELECT * FROM `book` WHERE `number`= '$or' LIMIT 1";
+                    $sqdl3 = "SELECT * FROM `book` WHERE `number`LIKE '% $or %' LIMIT 1";
                     $resultd3 = mysqli_query($link, $sqdl3);
                     $rowq3 = mysqli_fetch_assoc($resultd3);
                     
@@ -121,10 +118,10 @@ if($result){
         echo "<td>".$rowq['direction']."</td>";
         echo "<td>".$rowq['groups']."</td>";
     
-        $sql3 = "SELECT * FROM `book` WHERE `number` =".$row['book_id'];
+        $sql3 = "SELECT * FROM `book` WHERE `number` LIKE '% ".$row['book_id']." %' LIMIT 1";
         $result3 = mysqli_query($link, $sql3);
         $roww = mysqli_fetch_assoc($result3);
-        echo "<td>".$roww['number']."</td>";
+        echo "<td>".$row['book_id']."</td>";
         echo "<td>".$roww['name']."</td>";
     
         echo "<td>".$row['bookdate']."</td>";
