@@ -134,9 +134,10 @@ if($result){
         echo "<td>".$rowq['direction']."</td>";
         echo "<td>".$rowq['groups']."</td>";
     
-        $sql3 = "SELECT * FROM `book` WHERE `number` =".$row['book_id'];
+        $sql3 = "SELECT * FROM `book` WHERE `number` LIKE '% ".$row['book_id']." %' LIMIT 1";
         $result3 = mysqli_query($link, $sql3);
         $roww = mysqli_fetch_assoc($result3);
+
         echo "<td>".$roww['number']."</td>";
         echo "<td>".$roww['name']."</td>";
     

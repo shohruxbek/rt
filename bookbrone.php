@@ -113,15 +113,16 @@ $alert =  '<div class="alert alert-danger alert-dismissible fade show">
 
         if($stmt->execute([ $student_id,$book_id,$bookdate,$total,$issue_date,$return_date  ])) {
                 $stmt = null;
-                $sqdl3 = "SELECT * FROM `book` WHERE `number`=$output LIMIT 1";
+                $sqdl3 = "SELECT * FROM `book` WHERE `number` LIKE '% $output %' LIMIT 1";
                 $resultd3 = mysqli_query($link, $sqdl3);
                 $rowq3 = mysqli_fetch_assoc($resultd3);
                 if($rowq3!=null){
-                    $sqlr = "UPDATE book SET total=?, gettotal=? WHERE number =?";
+                    $sqlr = "UPDATE book SET total=?, gettotal=? WHERE id =?";
                     $stmt= $pdo->prepare($sqlr);
                     $totalsa = $rowq3['total']-$total;
                     $totalsb = $rowq3['gettotal']+$total;
-                    $stmt->execute([$totalsa, $totalsb, $output]);
+                    $id = $rowq3['id'];
+                    $stmt->execute([$totalsa, $totalsb, $id]);
                 }
                 $alert =  '<div class="alert alert-secondary alert-dismissible fade show">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
@@ -253,7 +254,17 @@ $(function () {
         students: $('input[name="student_id"]').val(),
       },
       success: function(data) {
-        $('input[name="book_id_result"]').val(data).show();
+       var datas = JSON.parse(data);
+        $('input[name="book_id_result"]').val(datas.result).show();
+
+        if(datas.ok=="false"){
+            $('button[type="submit"]').prop('disabled', true);
+            $('button[type="submit"]').attr('class', 'btn btn-primary right no-drop');
+        }else{
+            $('button[type="submit"]').prop('disabled', false);
+            $('button[type="submit"]').attr('class', 'btn btn-primary right');
+        }
+        
       }
     });
   });

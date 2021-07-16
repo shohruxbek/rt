@@ -33,7 +33,7 @@ if($rowq!=null){
        $stu = preg_replace('/[^0-9]/', '', $student );
 
        if(strlen($stu)<1){
-        echo "Talaba id'si kam yoki kiritilmagan";
+        echo json_encode(["result"=>"Talaba id'si kam yoki kiritilmagan","ok"=>"false"]);
         exit;
        }
 
@@ -41,11 +41,12 @@ if($rowq!=null){
     $resultd1 = mysqli_query($link, $sqdl1);
     $rowq1 = mysqli_fetch_assoc($resultd1);
 if($rowq1==null){
-    echo "Ushbu talaba bazada yo'q";
+    echo json_encode(["result"=>"Ushbu talaba bazada yo'q","ok"=>"false"]);
     exit;
 }
        if(strlen($nim)<1){
-        echo "Bunday kitob mavjud emas...";
+        echo json_encode(["result"=>"Bunday kitob mavjud emas...","ok"=>"false"]);
+        
         exit;
        }
 
@@ -57,13 +58,13 @@ if($rowq1==null){
     $resultd5 = mysqli_query($link, $sqdl5);
     $rowq5 = mysqli_fetch_assoc($resultd5);
 if($rowq5!=null){
-    echo "⚠️ Bu kitob avval olingan (".$rowq['name'].")";
+    echo json_encode(["result"=>"⚠️ Bu kitob avval olingan (".$rowq['name'].")","ok"=>"true"]);
     exit;
 }
       
-       echo $rowq['name'];
+       echo json_encode(["result"=>$rowq['name'],"ok"=>"true"]);
    }else{
-       echo "Bunday kitob mavjud emas...";
+       echo json_encode(["result"=>"Bunday kitob mavjud emas...","ok"=>"false"]);
    }
        }
 

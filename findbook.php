@@ -33,7 +33,7 @@ if(!function_exists('filter')){
         if(isset($_GET["id"]) && !empty($_GET["id"])){
             $stu = preg_replace('/[^0-9]/', '', $_GET['id'] );
             $stu2 = mysqli_real_escape_string($link,$_GET['id']);
-        $sql = "SELECT * FROM `book` WHERE `number` = '$stu' OR `name` LIKE '%$stu2%'";
+        $sql = "SELECT * FROM `book` WHERE `number` LIKE '% $stu %' OR `name` LIKE '%$stu2%'";
         $result = mysqli_query($link, $sql);
         $status = 2;
         
