@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Июл 28 2021 г., 07:29
--- Версия сервера: 10.4.12-MariaDB
--- Версия PHP: 7.4.5
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jul 29, 2021 at 08:36 AM
+-- Server version: 10.3.13-MariaDB-log
+-- PHP Version: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,36 +19,39 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `kutubxona`
+-- Database: `kutubxona`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `book`
+-- Table structure for table `book`
 --
 
 CREATE TABLE `book` (
   `id` int(11) NOT NULL,
-  `number` int(11) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
+  `number` mediumtext DEFAULT NULL,
+  `name` mediumtext DEFAULT NULL,
+  `author` mediumtext DEFAULT NULL,
   `year` varchar(255) DEFAULT NULL,
-  `total` int(11) DEFAULT NULL,
-  `gettotal` int(11) DEFAULT NULL
+  `total` varchar(255) DEFAULT NULL,
+  `gettotal` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `book`
+-- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`id`, `number`, `name`, `year`, `total`, `gettotal`) VALUES
-(1, 123, 'Iqtisodiyot nazariyasi', '2013', 48, 2),
-(2, 1, '1', '1', 0, 1);
+INSERT INTO `book` (`id`, `number`, `name`, `author`, `year`, `total`, `gettotal`) VALUES
+(17, ' 429021  427159  427160  427161 429280  421282  429803  429804 ', 'Царственный звездочет', 'Рубен Сафаров', 'Ташкент 1994', '11', '0'),
+(18, ' 16526 286155 168347 165259 ', 'Судьба', 'Ибрагим Рахим', 'Ташкент 1966', '5', '0'),
+(19, ' 16526 286155 168347 165259 ', '1', '1', '1', '1', '0'),
+(21, ' 123  456  789 ', '123', '123', '123', '3', '0');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `reserv`
+-- Table structure for table `reserv`
 --
 
 CREATE TABLE `reserv` (
@@ -61,17 +65,20 @@ CREATE TABLE `reserv` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `reserv`
+-- Dumping data for table `reserv`
 --
 
 INSERT INTO `reserv` (`id`, `student_id`, `book_id`, `bookdate`, `total`, `issue_date`, `return_date`) VALUES
-(2, 1, 123, '2021-07-08 08:55:06', 2, '13 July, 2021', '14 July, 2021'),
-(3, 1, 1, '2021-07-08 09:27:11', 1, '20 July, 2021', '20 July, 2021');
+(10, 1, 16526, '2021-07-15 09:48:26', 1, '15 July, 2021', '20 July, 2021'),
+(11, 1, 286155, '2021-07-15 09:49:39', 1, '14 July, 2021', '20 July, 2021'),
+(14, 1, 429021, '2021-07-16 06:09:00', 1, '16 July, 2021', '27 July, 2021'),
+(15, 1, 412454, '2021-07-16 06:09:53', 1, '7 July, 2021', '7 July, 2021'),
+(16, 1, 12, '2021-07-16 07:14:05', 1, '6 July, 2021', '13 July, 2021');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `student`
+-- Table structure for table `student`
 --
 
 CREATE TABLE `student` (
@@ -85,16 +92,17 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `student`
+-- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`id`, `numbers`, `firstname`, `lastname`, `sharifname`, `direction`, `groups`) VALUES
-(1, 1, 'Oybek', 'Umurzaqov', 'Shakarboy o\'g\'li', 'Iqtisod', '101');
+(15, 1, 'Oybek', 'Umurzaqov', '', 'Iqtisod', '101'),
+(16, 123, '123', '123', '123', '123', '123');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -106,67 +114,68 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `login`, `password`, `status`) VALUES
-(1, NULL, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', NULL);
+(1, 'Oybek aka', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', '1'),
+(2, 'a', 'a', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '1');
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `book`
+-- Indexes for table `book`
 --
 ALTER TABLE `book`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `reserv`
+-- Indexes for table `reserv`
 --
 ALTER TABLE `reserv`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `student`
+-- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `book`
+-- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `reserv`
+--
+ALTER TABLE `reserv`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT для таблицы `reserv`
---
-ALTER TABLE `reserv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT для таблицы `student`
---
-ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT для таблицы `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

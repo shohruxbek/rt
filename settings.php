@@ -46,8 +46,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </button>
         </div>';
     }else{
-
-      $sqdl3 = "SELECT * FROM `user` WHERE `id`=1";
+$idh = $_SESSION['id'];
+      $sqdl3 = "SELECT * FROM `user` WHERE `id`='$idh'";
       $resultd3 = mysqli_query($link, $sqdl3);
       $rowq3 = mysqli_fetch_assoc($resultd3);
       if($rowq3!=null){
@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($rowq3['password']==sha1($oldpass)){
             $vars = parse_columns('user', $_POST);
             $password = sha1($newpass1);
-            $stmt = $pdo->prepare("UPDATE user SET password=? WHERE id=1");
+            $stmt = $pdo->prepare("UPDATE user SET password=? WHERE id='$idh'");
 
             if($stmt->execute([$password])) {
                 $stmt = null;
@@ -117,8 +117,8 @@ if($_POST['login']){
           </button>
           </div>';
       }
-
-      $sqdl3 = "SELECT * FROM `user` WHERE `id`=1";
+$idh = $_SESSION['id'];
+      $sqdl3 = "SELECT * FROM `user` WHERE `id`='$idh'";
       $resultd3 = mysqli_query($link, $sqdl3);
       $rowq3 = mysqli_fetch_assoc($resultd3);
       if($rowq3!=null){
@@ -126,7 +126,7 @@ if($_POST['login']){
         if($rowq3['password']==sha1($oldpass)){
             $vars = parse_columns('user', $_POST);
             
-            $stmt = $pdo->prepare("UPDATE user SET login=?,name=? WHERE id=1");
+            $stmt = $pdo->prepare("UPDATE user SET login=?,name=? WHERE id='$idh'");
  $login = mysqli_real_escape_string($link,$login);
  $name = mysqli_real_escape_string($link,$name);
             if($stmt->execute([$login, $name])) {
@@ -232,7 +232,8 @@ include 'menu.php';
                         </div>
                     </div>
                 </div>
-            </div><div class="col-xl-6 col-xxl-8">
+            </div>
+            <div class="col-xl-6 col-xxl-8">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Ism va loginni almashtirish</h4>

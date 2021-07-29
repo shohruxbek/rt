@@ -1,5 +1,6 @@
 <div class="deznav">
             <div class="deznav-scroll">
+            	
                 <ul class="metismenu" id="menu">
                     <li><a href="bookbrone.php" class="ai-icon" aria-expanded="false">
 							<i class="flaticon-381-notepad"></i>
@@ -49,5 +50,16 @@
 						</a>
 					</li>
                 </ul>
+
+<?php if($_SESSION['id']==1){
+	echo '<ul class="metismenu" id="menu">
+                    <li><a href="adm.php" class="ai-icon" aria-expanded="false">
+							<i class="flaticon-381-settings-2"></i>
+							<span class="nav-text">Administratorlar</span>
+						</a>
+					</li>
+                </ul>';
+}?>
+                
 			</div>
         </div>

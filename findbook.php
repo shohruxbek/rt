@@ -74,6 +74,17 @@ if(!function_exists('filter')){
                         Axborot resurs markazi
                     </div>
                 </div>
+                <ul class="navbar-nav header-right">
+                            
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="login.php" role="button">
+                                    <img src="images/1.png" width="20" alt=""/>
+                                    <div class="header-info">
+                                        <span>Kirish</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
             </div>
         </nav>
     </div>

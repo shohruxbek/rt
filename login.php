@@ -4,16 +4,15 @@ $alert= "";
 if(isset($_POST['submit'])){
     require_once "config.php";
     require_once "helpers.php";
-    $sqdl3 = "SELECT * FROM `user` WHERE `id`=1";
-    $resultd3 = mysqli_query($link, $sqdl3);
-    $rowq3 = mysqli_fetch_assoc($resultd3);
-    if($rowq3!=null){
+    $sqdl3 = "SELECT * FROM `user`";
+	$resultd3 = mysqli_query($link, $sqdl3);
+    while($rowq3 = mysqli_fetch_array($resultd3)){
         $login = trim($_POST["login"]);
         $password = trim($_POST["password"]);
         if($rowq3['password']==sha1($password) and $rowq3['login']==$login){
-
             $_SESSION['login'] = $rowq3['login'];
             $_SESSION['name'] = $rowq3['name'];
+            $_SESSION['id'] = $rowq3['id'];
             header('location:admin.php');
         }else{
             $alert =  '<div class="alert alert-danger alert-dismissible fade show">

@@ -1,5 +1,10 @@
 <?php
 include_once 'session.php';
+
+if($_SESSION["id"]!=1) {
+        header("Location: admin.php");
+        exit();
+    }
 require_once "config.php";
 require_once "helpers.php";
 
